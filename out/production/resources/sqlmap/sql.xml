@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mubatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Dao">
+    <select id="getdata" parameterType="map" resultType="Integer" >
+        SELECT id from cfg_param_desc where param_en_name=#{param_en_name} AND param_type=#{param_type}
+    </select>
+
+    <update id="updata" parameterType="map">
+        UPDATE cfg_param_desc set param_code=#{param_code} where id=#{param_id}
+    </update>
+</mapper>

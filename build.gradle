@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'com.cmcc'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven {
+        url "http://maven.aliyun.com/nexus/content/groups/public/"
+        //url "http://localhost:8081/repository/madapes-public/"
+        //mavenCentral()
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
+    compile('org.postgresql:postgresql:42.2.5')
+    compile('com.zaxxer:HikariCP:3.3.1')
+    compile('org.mybatis:mybatis:3.5.1')
+
+}

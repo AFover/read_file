@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="config/db.properties"></properties>
+
+    <!--TODO 将日志写入文件中 -->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+       <!--1.配置环境，默认环境id为mysql-->
+    <environments default="postgresql">
+        <!--1.2 配置 id为postgresql的数据库环境-->
+        <environment id="postgresql">
+            <!--使用 JDBC 的事务管理-->
+            <transactionManager type="JDBC"/>
+            <!--数据库连接池-->
+            <dataSource type="com.pool.HikariDataSourceFactory">
+                <!-- JDBC连接下的配置 -->
+                <!--<property name="driver" value="${db.driver}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.username}"/>
+                <property name="password" value="${db.password}"/>-->
+
+                <!-- HikariCP连接池的配置 -->
+                <property name="driverClassName" value="${db.driver}"/>
+                <property name="jdbcUrl" value="${db.url}"/>
+                <property name="username" value="${db.username}"/>
+                <property name="password" value="${db.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--配置 Mapper的位置-->
+    <mappers>
+        <mapper resource="sqlmap/sql.xml"/>
+    </mappers>
+</configuration>
